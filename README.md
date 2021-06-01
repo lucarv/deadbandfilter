@@ -10,7 +10,7 @@ Disclaimer: This sample is for demonstration purposes only. It has not being tho
 ## How does it work  
 You can configure the module in one of the two available modes, **Absolute** or **Percent**. This is controlled by setting the environmental variable DBF_TYPE (percent or absolute).  
 If the mode is percent, You can specify the percentage on the environmental variable (DBF_WEIGHT).  
-The absolute mode needs a config file contained the bookends as below:
+The absolute mode needs a config file declaring the bookends as below:
 ```
 [
   {
