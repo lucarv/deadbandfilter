@@ -68,7 +68,8 @@ const filterPercent = (client, payloadArray) => {
   let weight = dbfWeight / 100;
 
   for (var i = 0; i < payloadArray.length; i++) {
-    let index = getIndex(cache, 'NodeId', payloadArray[i].NodeId);
+    let assetId = payloadArray[i].ApplicationUri + '-' + payloadArray[i].NodeId;
+    let index = getIndex(cache, 'AssetId', assetId);
     if (index > -1) {
       let min = (1 - weight) * cache[index].value;
       let max = (1 + weight) * cache[index].value;
@@ -80,7 +81,7 @@ const filterPercent = (client, payloadArray) => {
         if (debug == true) console.log(`${payloadArray[i].ApplicationUri}:${payloadArray[i].NodeId} VALUE ${payloadArray[i].Value.Value} INSIDE BAND (${min}, ${max}), IGNORE`);
       }
     }
-    let cached = { 'NodeId': payloadArray[i].NodeId, 'value': payloadArray[i].Value.Value };
+    let cached = { 'AssetId': assetId, 'value': payloadArray[i].Value.Value };
     cache.push(cached);
   }
 
@@ -136,7 +137,6 @@ function pipeMessage(client, inputName, msg) {
   client.complete(msg, () => { });
   var message = msg.getBytes().toString('utf8');
   if (message) {
-
     var payloadArray = JSON.parse(message);
     filteredArray = [];
     if (debug == true) console.log(`${payloadArray.length} Values in Message before filtering`)
