@@ -1,8 +1,11 @@
 # Azure Industrial Iot - OPC UA Deadband Filter
 
 This module can be chained on Azure IoT Edge in a pipeline after the opc publisher to effectively filter messages that fall within bookends.  
-For more info opn deadband, see the foundation website [here]](https://reference.opcfoundation.org/v104/Core/DataTypes/DeadbandType/)  
-As of the last commit of this repo, the feature was still in the backlog for Azure IIoT team. Whenever this feature is implemented this becomes obsolete.  
+For more info OPC UA deadband, see the foundation website [here]](https://reference.opcfoundation.org/v104/Core/DataTypes/DeadbandType/)  
+As of the last commit of this repo, the feature was still in the backlog for Azure IIoT team. 
+Whenever this feature is implemented this becomes obsolete.  
+
+Disclaimer: This sample is for demonstration purposes only. It has not being thouroughly tested outside sunny day scenarios.
 
 ## How does it work  
 You can configure the module in one of the two available modes, **Absolute** or **Percent**. This is controlled by setting the environmental variable DBF_TYPE (percent or absolute).  
